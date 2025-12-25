@@ -67,7 +67,7 @@ Voice Input → Speech-to-Text → Intent Extraction → LLM Planning → Percep
 
 To work with the complete integrated system, you should understand:
 
-- All components from previous chapters ([Voice Command Processing](../voice-to-action/index.md), [LLM-Based Planning](../llm-planning/index.md), [Perception Systems](../perception/index.md), [Control Systems](../control/index.md))
+- All components from previous chapters ([Voice Command Processing](../voice-to-action/index.md), [LLM-Based Planning](../llm-planning/index.md), [ROS 2 Perception and Control](./ros2-perception-control.md))
 - ROS 2 message passing and coordination mechanisms
 - System integration patterns and best practices
 - Debugging techniques for complex multi-component systems
@@ -79,22 +79,21 @@ The examples in this chapter will guide you through creating a fully functional 
 ### Related Concepts
 - [Voice Command Processing](../voice-to-action/index.md) - Converting natural language to structured commands
 - [LLM-Based Planning](../llm-planning/index.md) - Using large language models for cognitive planning
-- [Perception Integration](../perception/index.md) - Sensing and understanding the environment
-- [Control Systems](../control/index.md) - Executing robot actions safely
-- [Safety Validation](../safety/index.md) - Ensuring safe operation across all components
+- [ROS 2 Perception and Control](./ros2-perception-control.md) - Integrating perception and control systems
+- [Safety Validation](../llm-planning/safety-validation.md) - Ensuring safe operation across all components
 
 ### Building on Previous Work
 - [Common Terminology and Glossary](../glossary.md) - Key terms used throughout the module
 - [Code Conventions](../code-conventions.md) - Standards for implementation
-- [Simulation Setup](../simulation/setup.md) - Environment preparation
-- [ROS 2 Integration Patterns](../ros2-integration/patterns.md) - Best practices for component communication
+- [Simulation and Validation](./simulation-validation.md) - Environment preparation and testing
+- [Voice-to-Action ROS 2 Integration](../voice-to-action/ros2-integration.md) - Best practices for component communication
 
 ## Prerequisites
 
 Before starting this chapter, ensure you have completed:
-- [Module 1: The Robotic Nervous System (ROS 2)](../../module-1-ros2-nervous-system/intro.md)
-- [Module 2: The Digital Twin (Gazebo & Unity)](../../module-2-digital-twin/intro.md)
-- [Module 3: The AI-Robot Brain (NVIDIA Isaac™)](../../module-3-isaac-robot-brain/intro.md)
+- [Module 1: The Robotic Nervous System (ROS 2)](../../module-1-ros2-nervous-system/index.md)
+- [Module 2: The Digital Twin (Gazebo & Unity)](../../module-2-digital-twin/index.md)
+- [Module 3: The AI-Robot Brain (NVIDIA Isaac™)](../../module-3-isaac-robot-brain/index.md)
 - [Voice-to-Action Interfaces (Chapter 1 of Module 4)](../voice-to-action/index.md)
 - [LLM-Based Cognitive Planning (Chapter 2 of Module 4)](../llm-planning/index.md)
 

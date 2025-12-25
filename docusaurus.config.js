@@ -19,13 +19,15 @@ const config = {
   projectName: 'e_text_book_humanoid_robotics', // Usually your repo name.
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   markdown: {
     mermaid: true,
     mdx1Compat: {
       comments: true,
       admonitions: true,
       headingIds: true,
+    },
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
     },
   },
 
