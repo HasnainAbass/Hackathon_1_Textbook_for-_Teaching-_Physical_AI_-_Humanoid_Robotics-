@@ -1,0 +1,37 @@
+/* Custom CSS for Humanoid Robotics Textbook */
+/* You can add your custom styles here */
+
+:root {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styles for robotics content */
+.robotics-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.robotics-figure {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.robotics-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,100 @@
+# Documentation API Contract for Module 1: The Robotic Nervous System (ROS 2)
+
+# This contract defines the structure and interfaces for the educational content
+# Since this is documentation, the "API" represents the content structure and navigation
+
+openapi: 3.0.0
+info:
+  title: Module 1 Educational Content API
+  version: 1.0.0
+  description: API contract for ROS 2 educational content structure
+
+paths:
+  /module-1-ros2-nervous-system:
+    get:
+      summary: Get Module 1 overview
+      description: Returns the overview and learning objectives for Module 1
+      responses:
+        '200':
+          description: Module overview content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Module 1: The Robotic Nervous System (ROS 2)"
+                  description:
+                    type: string
+                    example: "Introduction to ROS 2 as the middleware nervous system for humanoid robots"
+                  chapters:
+                    type: array
+                    items:
+                      type: string
+                      example: "chapter-1-ros2-foundations"
+
+  /module-1-ros2-nervous-system/chapter-{number}:
+    get:
+      summary: Get specific chapter content
+      description: Returns content for a specific chapter in Module 1
+      parameters:
+        - name: number
+          in: path
+          required: true
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+      responses:
+        '200':
+          description: Chapter content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  content:
+                    type: string
+                  objectives:
+                    type: array
+                    items:
+                      type: string
+                  examples:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Example'
+                  exercises:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Exercise'
+
+components:
+  schemas:
+    Example:
+      type: object
+      properties:
+        title:
+          type: string
+        code:
+          type: string
+        explanation:
+          type: string
+        type:
+          type: string
+          enum: [code, conceptual, diagram]
+
+    Exercise:
+      type: object
+      properties:
+        title:
+          type: string
+        prompt:
+          type: string
+        difficulty:
+          type: string
+          enum: [basic, intermediate, advanced]
+        type:
+          type: string
+          enum: [multiple-choice, coding, explanation]

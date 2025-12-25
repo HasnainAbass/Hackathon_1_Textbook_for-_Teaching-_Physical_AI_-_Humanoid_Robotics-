@@ -1,0 +1,100 @@
+# Documentation API Contract for Module 2: The Digital Twin (Gazebo & Unity)
+
+# This contract defines the structure and interfaces for the educational content
+# Since this is documentation, the "API" represents the content structure and navigation
+
+openapi: 3.0.0
+info:
+  title: Module 2 Educational Content API
+  version: 1.0.0
+  description: API contract for Digital Twin educational content structure
+
+paths:
+  /module-2-digital-twin:
+    get:
+      summary: Get Module 2 overview
+      description: Returns the overview and learning objectives for Module 2
+      responses:
+        '200':
+          description: Module overview content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Module 2: The Digital Twin (Gazebo & Unity)"
+                  description:
+                    type: string
+                    example: "Introduction to digital twin concepts using Gazebo and Unity for humanoid robots"
+                  chapters:
+                    type: array
+                    items:
+                      type: string
+                      example: "chapter-1-gazebo-physics-simulation"
+
+  /module-2-digital-twin/chapter-{number}:
+    get:
+      summary: Get specific chapter content
+      description: Returns content for a specific chapter in Module 2
+      parameters:
+        - name: number
+          in: path
+          required: true
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+      responses:
+        '200':
+          description: Chapter content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  content:
+                    type: string
+                  objectives:
+                    type: array
+                    items:
+                      type: string
+                  examples:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Example'
+                  exercises:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Exercise'
+
+components:
+  schemas:
+    Example:
+      type: object
+      properties:
+        title:
+          type: string
+        code:
+          type: string
+        explanation:
+          type: string
+        type:
+          type: string
+          enum: [code, conceptual, diagram]
+
+    Exercise:
+      type: object
+      properties:
+        title:
+          type: string
+        prompt:
+          type: string
+        difficulty:
+          type: string
+          enum: [basic, intermediate, advanced]
+        type:
+          type: string
+          enum: [multiple-choice, coding, explanation]

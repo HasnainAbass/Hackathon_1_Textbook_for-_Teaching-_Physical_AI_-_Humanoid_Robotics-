@@ -1,55 +1,90 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT
+Version change: 1.0.0 → 1.0.1 (minor update with architecture details and citation standards)
+Modified principles: RAG System Architecture (expanded with architecture requirements)
+Added sections: Architecture Requirements section, Citation & Traceability section
+Removed sections: none
+Templates requiring updates:
+  - .specify/templates/plan-template.md ✅ updated
+  - .specify/templates/spec-template.md ✅ updated
+  - .specify/templates/tasks-template.md ✅ updated
+  - .specify/templates/commands/*.md ⚠ pending
+Runtime docs: README.md ⚠ pending
+Follow-up TODOs: none
+-->
+
+# AI-Spec–Driven Book with Embedded RAG Chatbot Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Specification-First Development
+Every feature and component must be defined in the specification before implementation begins. The Spec-Kit Plus serves as the single source of truth for all requirements, constraints, and acceptance criteria. No code should be written without a corresponding specification entry.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Accuracy and Faithfulness to Content
+All book content and chatbot responses must be faithful to the written material. The RAG system must not generate hallucinated information. When the answer is not found in the retrieved context, the system must respond with "Not found in the book content".
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Clarity and Pedagogical Progression
+Content must be organized with clear learning objectives, progressive complexity from fundamentals to advanced topics, and consistent terminology. Code examples must be runnable or clearly annotated as conceptual.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Reproducibility and Modularity
+The entire system must be reproducible by a third party with clear environment setup instructions. Components (book, backend, database, vector store, and chatbot) must be loosely coupled with clear interfaces.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Security and Responsible AI Usage
+All AI interactions must follow responsible usage guidelines, with proper input validation, output sanitization, and adherence to privacy requirements. Authentication and authorization mechanisms must be properly implemented where needed.
 
-### [PRINCIPLE_6_NAME]
+### Free-Tier Infrastructure Compatibility
+All infrastructure components must be compatible with free-tier services: GitHub Pages for deployment, Neon Serverless Postgres for metadata, and Qdrant Cloud (Free Tier) for vector storage.
 
+## Architecture Requirements
 
-[PRINCIPLE__DESCRIPTION]
+### System Components
+- OpenAI Agents / ChatKit SDKs for orchestration
+- FastAPI backend
+- Neon Serverless Postgres for metadata/state
+- Qdrant Cloud (Free Tier) for vector storage
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Architecture Standards
+- Clear separation between retrieval, prompt construction, and generation
+- Hallucination minimization: If answer not found in retrieved context, respond with "Not found in the book content"
+- Stateless backend API where possible
+- Proper error handling and graceful degradation strategies
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Authoring and Technical Standards
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Docusaurus-Based Content Creation
+All book content must be authored using Docusaurus (Markdown/MDX format) with clear chapter hierarchy, internal references between chapters, and proper metadata for navigation and SEO.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Citation & Traceability
+- Internal references between chapters encouraged
+- All chatbot answers must be traceable to retrieved chunks
+- Chunk metadata must include: Chapter, Section, Source file
+- No external knowledge injection unless explicitly labeled
+- Users can ask general questions about the book and questions limited to selected text
+
+## Development Workflow
+
+### Quality Gates
+- Book must build successfully with Docusaurus
+- GitHub Pages deployment must pass without errors
+- RAG chatbot must retrieve relevant chunks correctly
+- Answers must be based only on retrieved context
+- Correctly handles user-selected text queries
+- API endpoints documented and testable
+- Spec and implementation must maintain alignment
+
+### Testing Requirements
+- Unit tests for all backend components
+- Integration tests for RAG pipeline
+- End-to-end tests for chatbot functionality
+- Build verification for Docusaurus site
+
+### Code Standards
+- All code must be version-controlled
+- No undocumented assumptions outside the specification
+- Claude Code must be used for drafting chapters, generating code, and maintaining consistency
+- Proper error handling and graceful degradation strategies
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+The constitution serves as the governing document that supersedes all other development practices. All pull requests and reviews must verify compliance with these principles. Any changes to the constitution require formal amendment procedures with proper documentation and approval. All team members must follow these principles and refer to this constitution for guidance on project decisions.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.1 | **Ratified**: 2025-12-22 | **Last Amended**: 2025-12-22
