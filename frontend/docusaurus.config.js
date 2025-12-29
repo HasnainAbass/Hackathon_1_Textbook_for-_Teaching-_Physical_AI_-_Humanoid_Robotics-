@@ -9,13 +9,13 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'http://localhost:3000/',
+  url: 'https://e-text-book-humanoid-robotics.vercel.app', // Replace with your actual domain
   // Set the /<base> pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>'
   baseUrl: '/',
 
   // GitHub pages deployment config.
-  organizationName: 'your-organization', // Usually your GitHub org/user name.
+  organizationName: 'your-github-username', // Usually your GitHub org/user name.
   projectName: 'e_text_book_humanoid_robotics', // Usually your repo name.
 
   onBrokenLinks: 'warn',
